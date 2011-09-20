@@ -24,8 +24,9 @@ module VCR
         end
 
         it 'warns that there is a name collision' do
-          subject.should_receive(:warn).with \
+          subject.should_receive(:warn).with(
             /WARNING: There is already a VCR request matcher registered for :foo\. Overriding it/
+          )
 
           subject.register(:foo) { |*a| true }
         end

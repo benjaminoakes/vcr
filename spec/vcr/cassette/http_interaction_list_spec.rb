@@ -95,7 +95,7 @@ module VCR
           10.times do
             list.has_interaction_matching?(request_with(:method => :post)).should be_true
           end
-          list.response_for(request_with(:method => :post)).body.should == "post response 1"
+          list.response_for(request_with(:method => :post)).body.should eq("post response 1")
         end
       end
 
@@ -117,8 +117,8 @@ module VCR
         end
 
         it 'consumes the first matching interaction so that it will not be used again' do
-          list.response_for(request_with(:method => :post)).body.should == "post response 1"
-          list.response_for(request_with(:method => :post)).body.should == "post response 2"
+          list.response_for(request_with(:method => :post)).body.should eq("post response 1")
+          list.response_for(request_with(:method => :post)).body.should eq("post response 2")
         end
 
         it 'continues to return the response from the last matching interaction when there are no more' do
@@ -127,7 +127,7 @@ module VCR
           10.times.map {
             response = list.response_for(request_with(:method => :post))
             response ? response.body : nil
-          }.should == (["post response 2"] * 10)
+          }.should eq(["post response 2"] * 10)
         end
       end
     end
