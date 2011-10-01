@@ -23,6 +23,9 @@ group :extras do
   gem 'fuubar'
   gem 'fuubar-cucumber'
 
+  gem 'yard', '~> 0.7.2'
+  gem 'yard-rspec', '~> 0.1'
+
   platforms :mri do
     gem 'rcov'
     gem 'rb-fsevent'
